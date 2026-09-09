@@ -4,9 +4,7 @@ name: Update recipes
 # and publishes it to the gh-pages branch.
 
 on:
-  schedule:
-    - cron: "0 5 * * 1"   # every Monday 05:00 UTC
-  workflow_dispatch:       # manual "Run workflow" button
+  workflow_dispatch:       # manual "Run workflow" button only
 
 permissions:
   contents: write

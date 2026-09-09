@@ -226,6 +226,8 @@ def main():
     with open(os.path.join(SITE, "style.css"), "w", encoding="utf-8") as f:
         f.write(CSS)
     open(os.path.join(SITE, ".nojekyll"), "w").close()  # GitHub Pages
+    with open(os.path.join(SITE, "CNAME"), "w") as f:    # custom domain
+        f.write("sevim.girg.in\n")
 
     print(f"Built site/ with {len(recipes)} recipes.")
 
