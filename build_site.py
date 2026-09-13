@@ -28,7 +28,18 @@ header p { opacity:.85; font-size:.9rem; margin-top:.2rem; }
 .toolbar { display:flex; flex-wrap:wrap; gap:.6rem; margin:1.2rem 0; }
 #search { flex:1; min-width:200px; padding:.55rem .9rem; border:1px solid #ddd;
           border-radius:24px; font-size:1rem; background:#fff; }
-.cats { display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:1.2rem; }
+.cats-wrap { margin-bottom:1.2rem; }
+.cats-wrap summary { display:inline-flex; align-items:center; gap:.45rem; cursor:pointer;
+                     list-style:none; user-select:none; padding:.4rem .95rem; font-size:.9rem;
+                     border:1px solid #ddd; border-radius:24px; background:#fff; }
+.cats-wrap summary::-webkit-details-marker { display:none; }
+.cats-wrap[open] summary { border-color:var(--accent); }
+.cats-wrap .chev { font-size:.7rem; color:var(--muted); transition:transform .15s; }
+.cats-wrap[open] .chev { transform:rotate(180deg); }
+#activeCat { color:var(--accent); font-weight:600; }
+#activeCat:empty { display:none; }
+.cats-wrap .cats { margin-top:.7rem; }
+.cats { display:flex; flex-wrap:wrap; gap:.4rem; }
 .cat { padding:.25rem .8rem; border-radius:20px; border:1px solid #ddd; background:#fff;
        cursor:pointer; font-size:.85rem; }
 .cat.active { background:var(--accent); color:#fff; border-color:var(--accent); }
@@ -169,7 +180,10 @@ def index_page(recipes):
   <div class="toolbar">
     <input id="search" type="search" placeholder="Tarif ara... (ör. börek, çorba, patates)">
   </div>
-  <div class="cats">{cat_btns}</div>
+  <details class="cats-wrap" id="catsWrap">
+    <summary>🏷️ Kategoriler <span id="activeCat"></span><span class="chev">▾</span></summary>
+    <div class="cats">{cat_btns}</div>
+  </details>
   <div class="count"><span id="count">{len(recipes)}</span> tarif gösteriliyor</div>
   <div class="grid" id="grid">{''.join(cards)}</div>
 </div>
@@ -195,6 +209,8 @@ document.querySelectorAll('.cat').forEach(b => b.addEventListener('click', () =>
   document.querySelector('.cat.active').classList.remove('active');
   b.classList.add('active');
   activeCat = b.dataset.cat;
+  document.getElementById('activeCat').textContent = activeCat ? b.textContent : '';
+  document.getElementById('catsWrap').open = false;
   apply();
 }}));
 </script>

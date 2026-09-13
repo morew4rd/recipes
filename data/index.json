@@ -1,5 +1,21 @@
 [
  {
+  "slug": "nefis-limonlu-pudingli-alman-keki",
+  "title": "Nefis Limonlu Pudingli Alman Keki",
+  "datePublished": "2026-09-11",
+  "categories": [
+   "Tatlı Tarifleri",
+   "Kek Tarifleri"
+  ],
+  "servings": "8-10 kişilik",
+  "times": {
+   "prep": "PT15M",
+   "cook": "PT45M",
+   "total": "PT60M"
+  },
+  "image": "images/nefis-limonlu-pudingli-alman-keki-1.jpg"
+ },
+ {
   "slug": "zeytinyagli-nefis-barbunya-pilaki",
   "title": "Zeytinyağlı Nefis Barbunya Pilaki",
   "datePublished": "2026-08-27",
@@ -169,21 +185,6 @@
    "total": "PT50M"
   },
   "image": "images/nefis-kirpik-borek-1.jpg"
- },
- {
-  "slug": "pancar-tursusu-12465415",
-  "title": "Pancar Turşusu",
-  "datePublished": "2026-03-21",
-  "categories": [
-   "Tarifler"
-  ],
-  "servings": "10-12 kişilik",
-  "times": {
-   "prep": "PT15M",
-   "cook": "PT20M",
-   "total": "PT35M"
-  },
-  "image": "images/pancar-tursusu-1.jpg"
  },
  {
   "slug": "sahine-tatlisi-12468468",

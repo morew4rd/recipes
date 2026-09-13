@@ -201,12 +201,13 @@ def main():
         os.makedirs(d, exist_ok=True)
 
     urls_path = os.path.join(DATA, "urls.json")
-    if args.list or not os.path.exists(urls_path):
+    if args.parse and os.path.exists(urls_path):
+        urls = [(e["slug"], e["url"]) for e in json.load(open(urls_path))]
+    else:
+        # normal runs always refresh the list so new recipes are discovered
         urls = collect_recipe_urls()
         if args.list:
             return
-    else:
-        urls = [(e["slug"], e["url"]) for e in json.load(open(urls_path))]
 
     if args.limit:
         urls = urls[:args.limit]
