@@ -114,12 +114,12 @@ def recipe_page(r):
     for c in r["categories"]:
         badges.append(f"🏷️ {esc(c)}")
 
-    hero = f'<img class="recipe-hero" src="../{esc(r["images"][0])}" alt="{esc(r["title"])}">' \
+    hero = f'<img class="recipe-hero" src="../{esc(r["images"][-1])}" alt="{esc(r["title"])}">' \
         if r["images"] else ""
     photos = "".join(
         f'<a href="../{esc(p)}" target="_blank"><img src="../{esc(p)}" '
         f'alt="{esc(r["title"])}" loading="lazy"></a>'
-        for p in r["images"][1:])
+        for p in r["images"][:-1])
     photos_html = f'<h2>Fotoğraflar</h2><div class="photos">{photos}</div>' if photos else ""
 
     ing = "".join(f"<li>{esc(i)}</li>" for i in r["ingredients"])
@@ -145,9 +145,9 @@ def recipe_page(r):
 def index_page(recipes):
     cards = []
     for r in recipes:
-        first_img = r["images"][0] if r["images"] else None
-        img = f'<img src="{esc(first_img)}" alt="{esc(r["title"])}" loading="lazy">' \
-            if first_img else ""
+        cover_img = r["images"][-1] if r["images"] else None
+        img = f'<img src="{esc(cover_img)}" alt="{esc(r["title"])}" loading="lazy">' \
+            if cover_img else ""
         meta_bits = [b for b in (r["servings"],
                                  human_time(r["times"].get("total", ""))) if b]
         cards.append(f"""
